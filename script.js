@@ -1,22 +1,32 @@
 "use strict";
 
-let number = 10;
+const hello = () => {
+    console.log('hi!!!')
+    return Math.PI;
+};
 
-function showMessage(text) {
-    console.log(text);
-    let number = 20;
-    console.log(number);
+console.log(hello())
+
+function server(){
+    setTimeout(function(){
+        console.log(1);
+    }, 1000)
 }
 
-showMessage("Hello");
-console.log(number);
-
-const server = function() {
-    console.log("server start...");
+function foo() {
+    console.log(2);
 }
 
 server();
+foo();
 
-const calc = (x, y) => x + y;
+function serverNew(host, callback) {
+    console.log(`Server ${host} is starting...`);
+    callback();
+}
 
-console.log(calc(46, 1))
+function done() {
+    console.log('connect success!');
+}
+
+serverNew('MyServer', done);
