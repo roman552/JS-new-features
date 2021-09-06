@@ -1,42 +1,57 @@
 "use strict";
 
-const arr = [1, 2, 5, 8, 9];
+let a = 5,
+    b = a;
 
-console.log(arr);
+b = b + 5;
 
-arr.pop();
-console.log(arr);
+console.log(a);
+console.log(b);
 
-arr.push(10);
-console.log(arr);
-
-for (let i = 0; i < arr.length; i++) {
-    console.log(arr[i]);
+const obj = {
+    a:5,
+    b:1
 }
 
-for (let value of arr) {
-    console.log(value);
+const copy = obj;
+copy.a = 10;
+
+console.log(obj);
+console.log(copy);
+
+const newObj = Object.assign({}, obj);
+newObj.a = 15;
+console.log(newObj);
+
+const oldArray = ['a', 'x', 'y'];
+const newArray = oldArray.slice();
+
+newArray[0] = 5;
+console.log(oldArray);
+console.log(newArray);
+
+const video = ['youtube', 'vimeo', 'facebook'],
+    blogs = ['wordpress', 'twitter', 'blogger'],
+    internet = [...video, ...blogs, 'VK', 'instagram'];
+
+console.log(internet);
+
+function log(a, b, c) {
+    console.log(a);
+    console.log(b);
+    console.log(c);
 }
 
-const arr2 = [1, 2, 5, 8, 9];
-arr2[99] = 0; 
-console.log(arr2.length);
-console.log(arr2);
+const num = [2, 5, 8];
 
-arr2.forEach(function(item, i, arr2){
-    console.log(`${i}: ${item} внутри массива ${arr2}`)
-});
+log(...num);
 
-const str = prompt('', '');
-const products = str.split(", ");
-console.log(products);
-products.sort();
-console.log(products)
-console.log(products.join("; "));
+const ar = [4, 3, 0];
+const NewAr = [...ar];
 
-products.sort(compareNum);
-function compareNum(a, b) {
-    return a-b;
-}
+const aaa = {
+    first: 1,
+    second: 2
+};
 
-console.log(products)
+const newA = {...aaa};
