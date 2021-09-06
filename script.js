@@ -1,84 +1,42 @@
 "use strict";
 
-const option = {
-    name: 'test',
-    width: '640',
-    height: '480',
-    colors: {
-        border: 'black',
-        bg: 'red'
-    }
-};
+const arr = [1, 2, 5, 8, 9];
 
-console.log(option.name);
-console.log(option["name"]);
+console.log(arr);
 
-console.log(option);
+arr.pop();
+console.log(arr);
 
-for (let key in option) {
-    console.log(`Свойство ${key} имеет значение ${option[key]}`);
+arr.push(10);
+console.log(arr);
+
+for (let i = 0; i < arr.length; i++) {
+    console.log(arr[i]);
 }
 
-let counter = 0;
-for (let key in option) {
-    if (typeof(option[key]) === 'object') {
-        for (let i in option[key]) {
-            console.log(`Свойство ${i} имеет значение ${option[key][i]}`);
-            counter++
-        }
-    }else{
-        console.log(`Свойство ${key} имеет значение ${option[key]}`);
-        counter++
-    }
+for (let value of arr) {
+    console.log(value);
 }
 
-console.log(counter);
+const arr2 = [1, 2, 5, 8, 9];
+arr2[99] = 0; 
+console.log(arr2.length);
+console.log(arr2);
 
-console.log(Object.keys(option));
-console.log(Object.keys(option).length);
+arr2.forEach(function(item, i, arr2){
+    console.log(`${i}: ${item} внутри массива ${arr2}`)
+});
 
-const option2 = {
-    name: 'test',
-    width: '640',
-    height: '480',
-    colors: {
-        border: 'black',
-        bg: 'red'
-    },
-    makeTest: function(){
-        console.log('yes');
-    }
-};
+const str = prompt('', '');
+const products = str.split(", ");
+console.log(products);
+products.sort();
+console.log(products)
+console.log(products.join("; "));
 
-option2.makeTest();
+products.sort(compareNum);
+function compareNum(a, b) {
+    return a-b;
+}
 
-const {border, bg} = option2.colors;
-console.log(border);
-
-const game = {
-    name: 'game1',
-    version: '1.0',
-    developer: 'developer1',
-    info: {
-        description: 'description1',
-        genre: 'genre1',
-        rating: '7.5/10'
-    },
-    engine: 'engine',
-    platform: 'PC',
-    price: '100$',
-
-    showName:function(){
-        console.log(this.name);
-    },
-
-    showDeveloper:function(){
-        console.log(this.developer);
-    }
-};
-
-game.showDeveloper();
-game.showName();
-
-const {description, rating} = game.info;
-console.log(description, rating)
+console.log(products)
