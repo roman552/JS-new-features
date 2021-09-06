@@ -1,32 +1,84 @@
 "use strict";
 
-const hello = () => {
-    console.log('hi!!!')
-    return Math.PI;
+const option = {
+    name: 'test',
+    width: '640',
+    height: '480',
+    colors: {
+        border: 'black',
+        bg: 'red'
+    }
 };
 
-console.log(hello())
+console.log(option.name);
+console.log(option["name"]);
 
-function server(){
-    setTimeout(function(){
-        console.log(1);
-    }, 1000)
+console.log(option);
+
+for (let key in option) {
+    console.log(`Свойство ${key} имеет значение ${option[key]}`);
 }
 
-function foo() {
-    console.log(2);
+let counter = 0;
+for (let key in option) {
+    if (typeof(option[key]) === 'object') {
+        for (let i in option[key]) {
+            console.log(`Свойство ${i} имеет значение ${option[key][i]}`);
+            counter++
+        }
+    }else{
+        console.log(`Свойство ${key} имеет значение ${option[key]}`);
+        counter++
+    }
 }
 
-server();
-foo();
+console.log(counter);
 
-function serverNew(host, callback) {
-    console.log(`Server ${host} is starting...`);
-    callback();
-}
+console.log(Object.keys(option));
+console.log(Object.keys(option).length);
 
-function done() {
-    console.log('connect success!');
-}
+const option2 = {
+    name: 'test',
+    width: '640',
+    height: '480',
+    colors: {
+        border: 'black',
+        bg: 'red'
+    },
+    makeTest: function(){
+        console.log('yes');
+    }
+};
 
-serverNew('MyServer', done);
+option2.makeTest();
+
+const {border, bg} = option2.colors;
+console.log(border);
+
+const game = {
+    name: 'game1',
+    version: '1.0',
+    developer: 'developer1',
+    info: {
+        description: 'description1',
+        genre: 'genre1',
+        rating: '7.5/10'
+    },
+    engine: 'engine',
+    platform: 'PC',
+    price: '100$',
+
+    showName:function(){
+        console.log(this.name);
+    },
+
+    showDeveloper:function(){
+        console.log(this.developer);
+    }
+};
+
+game.showDeveloper();
+game.showName();
+
+const {description, rating} = game.info;
+console.log(description, rating)
